@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { router } from "../router";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const SHeader = styled.header`
   width: 100%;
@@ -12,6 +13,8 @@ const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: ${(props) => props.bgColor};
+  transition-duration: 0.5s;
 `;
 
 const Logo = styled.h3`
@@ -34,18 +37,37 @@ const Menu = styled.li`
 `;
 
 export const Header = () => {
+  const [bg, setBg] = useState();
+  // const[fix, setfix] = useState();
+
+  const handleScroll = () => {
+    const sct = window.pageYOffset;
+    // console.log(sct);
+
+    if (sct >= 200) {
+      setBg("rgba(0,0,0,0.7)");
+      // setfix("fixed");
+    } else {
+      setBg("");
+      // setfix("absolute");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
   return (
-    <SHeader>
+    <SHeader bgColor={bg}>
+      {/* SHeader fixed={fix} 전달, position props에전달해주기 */}
       <Logo>
         <Link to={router.home}>PATI</Link>
       </Logo>
 
       <MenuWrap>
         <Menu>
-          <Link to="#">홈</Link>
+          <Link to={router.home}>홈</Link>
         </Menu>
         <Menu>
-          <Link to="#">영화검색</Link>
+          <Link to={router.search}>영화검색</Link>
         </Menu>
       </MenuWrap>
     </SHeader>
