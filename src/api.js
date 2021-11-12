@@ -10,7 +10,7 @@ const api = axios.create({
 
 export const movieApi = {
   nowPlaying: () => api.get("movie/now_playing"),
-  upComming: () => api.get("movie/upcoming"),
+  upComing: () => api.get("movie/upcoming"),
   // https://api.themoviedb.org/3/api_key/language/nowPlaying => 으로 불러옴
 };
 

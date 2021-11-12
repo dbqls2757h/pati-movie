@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { router } from "../router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { mainWeight } from "../style/GlobalStyled";
 
 const SHeader = styled.header`
   width: 100%;
@@ -21,7 +22,7 @@ const Logo = styled.h3`
   font-size: 25px;
   font-weight: 600;
   a {
-    color: crimson;
+    color: gold;
   }
 `;
 
@@ -33,7 +34,7 @@ const Menu = styled.li`
   &:nth-child(1) {
     margin-right: 50px;
   }
-  font-weight: 600;
+  font-weight: ${mainWeight.TitleWeight};
 `;
 
 export const Header = () => {
