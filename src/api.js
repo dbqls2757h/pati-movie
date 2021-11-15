@@ -11,6 +11,8 @@ const api = axios.create({
 export const movieApi = {
   nowPlaying: () => api.get("movie/now_playing"),
   upComing: () => api.get("movie/upcoming"),
+  popular: () => api.get("movie/popular"),
+  topRate: () => api.get("movie/top_rated"),
   // https://api.themoviedb.org/3/api_key/language/nowPlaying => 으로 불러옴
 };
 

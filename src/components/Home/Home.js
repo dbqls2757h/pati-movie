@@ -1,14 +1,37 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
+
 import { movieApi } from "../../api";
-import { mainWeight } from "../../style/GlobalStyled";
 import { Loader } from "../Loader";
 import { MainBanner } from "./MainBanner";
+import { Container } from "../Container";
+import { mainWeight } from "../../style/GlobalStyled";
+import "../../style/swiper.css";
+import { Movies } from "./Movies";
 
 // console.log(movieApi.nowPlaying());
 
 const Wrap = styled.div``;
+
+const Section = styled.section``;
+
+const Title = styled.h3`
+  font-weight: ${mainWeight.TitleWeight};
+  font-size: 35px;
+  margin: 80px 0 30px 0;
+`;
+
+const CoverImg = styled.div`
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+`;
+
+const MovieTitle = styled.h4`
+  font-size: 18px;
+  margin-top: 15px;
+`;
 
 export const Home = () => {
   //Usestate를 이용하여 results 저장하고, useEffect 밖으로 변수 호출할 수 있도록 만들기
@@ -16,8 +39,10 @@ export const Home = () => {
 
   const [nowPlay, setNowPlay] = useState();
   const [upComing, setUpComing] = useState();
+  const [popular, setPopular] = useState();
+  const [topRate, setTopRate] = useState();
   const [loading, setLoading] = useState(true);
-  const movieNum = 0;
+  const movieNum = 2;
 
   useEffect(() => {
     const movieData = async () => {
@@ -32,6 +57,16 @@ export const Home = () => {
           data: { results: upComing },
         } = await movieApi.upComing();
         setUpComing(upComing);
+
+        const {
+          data: { results: popular },
+        } = await movieApi.popular();
+        setPopular(popular);
+
+        const {
+          data: { results: topRate },
+        } = await movieApi.topRate();
+        setTopRate(topRate);
 
         setLoading(false);
       } catch (error) {
@@ -48,27 +83,27 @@ export const Home = () => {
   // => 처음엔 필수로 &&(있다면) 넣어달라고 적기 아니면 오류뜸
 
   return (
-    <>
-      {/* => nowPlay로 묶어서 코드 줄여줌 */}
-      {/* nowPlay[0] 를 movieNum으로 변수처리 */}
+    <div>
       {loading ? (
         <Loader />
       ) : (
-        <Wrap>{nowPlay && <MainBanner now={nowPlay} num={movieNum} />}</Wrap>
-      )}
+        <>
+          {nowPlay && (
+            <Wrap>
+              <MainBanner now={nowPlay} num={movieNum} />
 
-      {/* <Wrap>
-        <MainBanner
-          style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original${
-              nowPlay && nowPlay[0].backdrop_path
-            })`,
-          }}
-        >
-          <Title>{nowPlay && nowPlay[0].title} </Title>
-          <Desc>{nowPlay && nowPlay[0].overview.slice(0, 70) + "..."}</Desc>
-        </MainBanner>
-      </Wrap> */}
-    </>
+              <Section>
+                <Container>
+                  <Movies movieData={nowPlay} title="현재 상영 영화" />
+                  <Movies movieData={upComing} title="개봉 예정 영화" />
+                  <Movies movieData={popular} title="인기 영화" />
+                  <Movies movieData={topRate} title="상영 순위" />
+                </Container>
+              </Section>
+            </Wrap>
+          )}
+        </>
+      )}
+    </div>
   );
 };

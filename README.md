@@ -1,3 +1,5 @@
+다음시간 navigation버튼, 분해시키기
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
