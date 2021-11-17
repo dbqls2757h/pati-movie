@@ -10,6 +10,13 @@ export const mainWeight = {
   TitleWeight: 600,
 };
 
+export const moSize = {
+  padding: "0 20px",
+  titleSize: "45px",
+  descSize: "16px",
+  movieTitle: "14px",
+};
+
 export const GlobalStyled = createGlobalStyle`
     ${reset}
 
@@ -27,5 +34,6 @@ export const GlobalStyled = createGlobalStyle`
         background-color: ${mainColor.bgColor};
         color: ${mainColor.fontColor};
         letter-spacing: -1px;
+        word-break: keep-all;
     }
 `;

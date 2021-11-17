@@ -9,6 +9,7 @@ const SFooter = styled.footer`
   border-top: 1px solid #555;
   font-size: 14px;
   color: gray;
+  margin-top: 200px;
 `;
 
 export const Footer = () => {

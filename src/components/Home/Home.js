@@ -6,32 +6,14 @@ import { movieApi } from "../../api";
 import { Loader } from "../Loader";
 import { MainBanner } from "./MainBanner";
 import { Container } from "../Container";
-import { mainWeight } from "../../style/GlobalStyled";
 import "../../style/swiper.css";
 import { Movies } from "./Movies";
-
+import { PageTitle } from "../PageTitle";
 // console.log(movieApi.nowPlaying());
 
 const Wrap = styled.div``;
 
 const Section = styled.section``;
-
-const Title = styled.h3`
-  font-weight: ${mainWeight.TitleWeight};
-  font-size: 35px;
-  margin: 80px 0 30px 0;
-`;
-
-const CoverImg = styled.div`
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-`;
-
-const MovieTitle = styled.h4`
-  font-size: 18px;
-  margin-top: 15px;
-`;
 
 export const Home = () => {
   //Usestate를 이용하여 results 저장하고, useEffect 밖으로 변수 호출할 수 있도록 만들기
@@ -84,6 +66,8 @@ export const Home = () => {
 
   return (
     <div>
+      <PageTitle title="홈" />
+
       {loading ? (
         <Loader />
       ) : (
