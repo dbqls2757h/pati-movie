@@ -7,6 +7,8 @@ import { Home } from "./components/Home/Home";
 import { Detail } from "./components/Detail/Detail";
 import { Search } from "./components/Search/Search";
 import { Footer } from "./components/Footer";
+import { PageNotFound } from "./components/PageNotFound";
+
 import { HelmetProvider } from "react-helmet-async";
 
 function App() {
@@ -30,10 +32,12 @@ function App() {
             <Search />
           </Route>
 
-          <Route>Page Not Found</Route>
+          <Route path={router.pageNotFound}>
+            <PageNotFound />
+          </Route>
         </Switch>
 
-        <Footer />
+        <Footer></Footer>
       </Router>
     </HelmetProvider>
   );

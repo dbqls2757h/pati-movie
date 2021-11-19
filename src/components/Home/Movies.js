@@ -4,7 +4,6 @@ import SwiperCore, { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { mainWeight, moSize } from "../../style/GlobalStyled";
 import "../../style/swiper.css";
-import { router } from "../../router";
 
 const Title = styled.h3`
   font-weight: ${mainWeight.TitleWeight};
@@ -54,8 +53,8 @@ export const Movies = ({ movieData, title }) => {
       <Title>{title}</Title>
       <Swiper
         modules={[Navigation]}
-        slidesPerView={5}
-        spaceBetween={20}
+        // slidesPerView={5}
+        // spaceBetween={20}
         {...params}
         navigation
       >
@@ -65,7 +64,7 @@ export const Movies = ({ movieData, title }) => {
               {/* <Link to={router.detail /`${play.id}`}> */}
               <CoverImg
                 style={{
-                  backgroundImage: `url(https://image.tmdb.org/t/p/original${play.backdrop_path})`,
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original${play.poster_path})`,
                 }}
               />
               <MovieTitle>{play.title}</MovieTitle>
