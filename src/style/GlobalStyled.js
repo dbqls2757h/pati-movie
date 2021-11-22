@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { reset } from "styled-reset";
 
-const mainColor = {
+export const mainColor = {
   fontColor: "#fff",
   bgColor: "#1d1d1d",
 };

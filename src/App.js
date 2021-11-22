@@ -10,12 +10,15 @@ import { Footer } from "./components/Footer";
 import { PageNotFound } from "./components/PageNotFound";
 
 import { HelmetProvider } from "react-helmet-async";
+import { ScrollTop } from "./components/ScrollTop";
 
 function App() {
   return (
     <HelmetProvider>
       <Router>
         <GlobalStyled />
+
+        <ScrollTop />
 
         <Header />
 
@@ -37,7 +40,7 @@ function App() {
           </Route>
         </Switch>
 
-        <Footer></Footer>
+        <Footer />
       </Router>
     </HelmetProvider>
   );

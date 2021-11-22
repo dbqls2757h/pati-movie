@@ -14,6 +14,7 @@ export const movieApi = {
   popular: () => api.get("movie/popular"),
   topRate: () => api.get("movie/top_rated"),
   detail: (id) => api.get(`movie/${id}`),
+  video: (movie_id) => api.get(`movie/${movie_id}/videos`),
 
   // https://api.themoviedb.org/3/api_key/language/nowPlaying => 으로 불러옴
 };
