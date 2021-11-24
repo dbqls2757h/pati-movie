@@ -113,12 +113,12 @@ const CloseBtn = styled.div`
 `;
 
 export const MainBanner = ({ now, num }) => {
-  const [moreHeight, setMoreHeight] = useState(0);
+  const [more, setMore] = useState(0);
   const [moreNum, setMoreNum] = useState(0);
 
   const onClickMore = () => {
     if (moreNum == 0) {
-      setMoreHeight("80vh");
+      setMore("80vh");
       window.scrollTo({
         top: 500,
         left: 0,
@@ -126,7 +126,7 @@ export const MainBanner = ({ now, num }) => {
       });
       setMoreNum(moreNum + 1);
     } else if (moreNum == 1) {
-      setMoreHeight("0");
+      setMore("0");
       setMoreNum(moreNum - 1);
     }
     // else {
@@ -155,7 +155,7 @@ export const MainBanner = ({ now, num }) => {
         </Button>
       </SMainBanner>
 
-      <MoreBanner height={moreHeight}>
+      <MoreBanner height={more}>
         <ConWrap>
           <MoreTitle>{now[`${num}`].title}</MoreTitle>
           <MoreDesc>{now[`${num}`].overview.slice(0, 250) + "..."}</MoreDesc>
