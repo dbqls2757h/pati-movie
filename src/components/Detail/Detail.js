@@ -8,13 +8,17 @@ import { PageNotFound } from "../PageNotFound";
 import { useParams } from "react-router-dom";
 import { Container } from "../Container";
 import { Loader } from "../Loader";
-import { mainColor, mainWeight } from "../../style/GlobalStyled";
+import { mainColor, mainWeight, moSize } from "../../style/GlobalStyled";
 
 const Wrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 80px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    margin-top: 60px;
+  }
 `;
 
 const Img = styled.div`
@@ -23,6 +27,11 @@ const Img = styled.div`
   margin-right: 30px;
   background-size: cover;
   background-position: top;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 20px;
+  }
 `;
 
 const ConWrap = styled.div`
@@ -31,16 +40,27 @@ const ConWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   letter-spacing: 0;
+  margin-left: 50px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
 const Title = styled.div`
   font-size: 30px;
   font-weight: ${mainWeight.TitleWeight};
   margin-bottom: 20px;
+  @media screen and (max-width: 500px) {
+    font-size: 34px;
+  }
 `;
 
 const Sub = styled.li`
   margin-bottom: 10px;
+  @media screen and (max-width: 500px) {
+    font-size: ${moSize.descSize};
+  }
 `;
 
 const Desc = styled.div`
@@ -48,6 +68,9 @@ const Desc = styled.div`
   opacity: 0.9;
   font-weight: 300;
   line-height: 22px;
+  @media screen and (max-width: 500px) {
+    font-size: ${moSize.descSize};
+  }
 `;
 
 const Button = styled.button`
@@ -70,11 +93,15 @@ const Button = styled.button`
       padding-left: 20px;
     }
   }
+  @media screen and (max-width: 500px) {
+    width: 140px;
+    height: 40px;
+  }
 `;
 
 const VideoWrap = styled.div`
   height: 100vh;
-  padding: 100px 0;
+  padding: 60px 0;
 `;
 
 const Video = styled.iframe`
@@ -83,11 +110,6 @@ const Video = styled.iframe`
 `;
 
 export const Detail = () => {
-  // const location = useLocation();
-  // console.log(location);
-
-  // const history = useHistory();
-
   const { id } = useParams();
   // console.log(id);
 
@@ -95,7 +117,6 @@ export const Detail = () => {
   const [videoData, setVideoData] = useState();
 
   const [loading, setLoading] = useState(true);
-  // const [errorPage, setErrorPage] = useState(false);
 
   useEffect(() => {
     const movieDetail = async () => {
@@ -116,7 +137,6 @@ export const Detail = () => {
       } catch (error) {
         // console.log(error);
         <PageNotFound />;
-        // setErrorPage(true);
       }
     };
     movieDetail();
