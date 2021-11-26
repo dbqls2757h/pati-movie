@@ -9,6 +9,7 @@ const SMainBanner = styled.section`
   background-size: cover;
   background-position: center;
   padding: 220px 80px;
+  position: relative;
   @media screen and (max-width: 500px) {
     padding: 220px 20px;
   }
@@ -23,9 +24,12 @@ const Title = styled.h3`
   line-height: 1.2em;
   margin-bottom: 25px;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 9;
   @media screen and (max-width: 500px) {
     font-size: 45px;
     margin-bottom: 15px;
+    margin-top: 100px;
   }
 `;
 
@@ -36,9 +40,20 @@ const Desc = styled.p`
   opacity: 0.9;
   line-height: 1.4em;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+  position: relative;
+  z-index: 9;
   @media screen and (max-width: 500px) {
     font-size: ${moSize.descSize};
   }
+`;
+
+const BlackBg = styled.div`
+  width: 100%;
+  height: 60vh;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, black, transparent);
 `;
 
 const Button = styled.button`
@@ -51,6 +66,8 @@ const Button = styled.button`
   cursor: pointer;
   text-align: center;
   transition-duration: 0.3s;
+  position: relative;
+  z-index: 9;
   span {
     transition-duration: 0.2s;
   }
@@ -62,8 +79,7 @@ const Button = styled.button`
     }
   }
   @media screen and (max-width: 500px) {
-    width: 140px;
-    height: 40px;
+    display: none;
   }
 `;
 
@@ -117,7 +133,7 @@ export const MainBanner = ({ now, num }) => {
   const [moreNum, setMoreNum] = useState(0);
 
   const onClickMore = () => {
-    if (moreNum == 0) {
+    if (moreNum === 0) {
       setMore("80vh");
       window.scrollTo({
         top: 500,
@@ -125,7 +141,7 @@ export const MainBanner = ({ now, num }) => {
         behavior: "smooth",
       });
       setMoreNum(moreNum + 1);
-    } else if (moreNum == 1) {
+    } else if (moreNum === 1) {
       setMore("0");
       setMoreNum(moreNum - 1);
     }
@@ -135,7 +151,7 @@ export const MainBanner = ({ now, num }) => {
   };
 
   const onClickClose = () => {
-    setMoreHeight("0");
+    setMore("0");
     setMoreNum(moreNum - 1);
   };
 
@@ -150,6 +166,8 @@ export const MainBanner = ({ now, num }) => {
       >
         <Title>{now[`${num}`].title} </Title>
         <Desc>{now[`${num}`].overview.slice(0, 70) + "..."}</Desc>
+        <BlackBg />
+
         <Button onClick={onClickMore}>
           더보기 <span>+</span>
         </Button>

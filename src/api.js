@@ -15,6 +15,14 @@ export const movieApi = {
   topRate: () => api.get("movie/top_rated"),
   detail: (id) => api.get(`movie/${id}`),
   video: (movie_id) => api.get(`movie/${movie_id}/videos`),
+  search: (term) =>
+    api.get("search/movie", {
+      params: {
+        // query: term,
+        // => uri주소로 전환
+        query: encodeURIComponent(term),
+      },
+    }),
 
   // https://api.themoviedb.org/3/api_key/language/nowPlaying => 으로 불러옴
 };
