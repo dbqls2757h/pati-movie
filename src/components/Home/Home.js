@@ -9,6 +9,7 @@ import { Container } from "../Container";
 import "../../style/swiper.css";
 import { Movies } from "./Movies";
 import { PageTitle } from "../PageTitle";
+import { PageNotFound } from "../PageNotFound";
 // console.log(movieApi.nowPlaying());
 
 const Wrap = styled.div``;
@@ -52,16 +53,16 @@ export const Home = () => {
 
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        <PageNotFound />;
       }
     };
     movieData();
   }, []);
 
-  console.log("현재 상영 영화", nowPlay);
+  // console.log("현재 상영 영화", nowPlay);
   // console.log("개봉 예정 영화", upComing);
 
-  console.log(nowPlay && nowPlay[0]);
+  // console.log(nowPlay && nowPlay[0]);
   // => 처음엔 필수로 &&(있다면) 넣어달라고 적기 아니면 오류뜸
 
   return (

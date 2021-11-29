@@ -47,6 +47,7 @@ const Title = styled.div`
   margin-top: 10px;
 `;
 
+
 export const Search = () => {
   const [search, setSearch] = useState();
   //검색하기를 눌렀을때 로딩이 떠야해서 ()비워둠
@@ -97,7 +98,7 @@ export const Search = () => {
     }
   };
 
-  console.log(search);
+  // console.log(search);
 
   //5 api에 변수 저장
 
