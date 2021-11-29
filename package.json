@@ -1,5 +1,5 @@
 {
-  "name": "pati-move-21-11",
+  "name": "pati-movie",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://dbqls2757h.github.io/pati-move-21-11/",
+  "homepage": "https://dbqls2757h.github.io/pati-movie/",
   "eslintConfig": {
     "extends": [
       "react-app",
